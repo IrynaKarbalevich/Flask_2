@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" href="{{ url_for('static', filename='css/main.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    {% block title -%}
+    {% if title %}
+    <title>Про Flask - {{title}}</title>
+    {% else %}
+    <title>Про Flask</title>
+    {% endif %}
+    {% endblock %}
+</head>
+<body>
+{% block content -%}
+{%- block mainmenu -%}
+<ul class="mainmenu">
+    <img src="https://miro.medium.com/max/480/1*Wpeac8GYxcU02Sr2DPo6uw.png"
+         style="width: 85px; height: 85px; float: left; margin: -10px 0 ">
+    {% for m in menu -%}
+    <li><a href="{{m.url}}">{{m.name}}</a></li>
+    {% endfor -%}
+</ul>
+{% endblock mainmenu -%}
+<div class="clear"></div>
+<div class="content"></div>
+{% endblock%}
+{% block consol %}
+<div class="container">
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/contact" class="nav-link px-2 text-muted">Контакты</a></li>
+            <li class="nav-item"><a href="/certificate" class="nav-link px-2 text-muted">Сертификаты</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2022 <img class="mb-2"
+                                                      src="https://miro.medium.com/max/480/1*Wpeac8GYxcU02Sr2DPo6uw.png"
+                                                      alt="" width="60">
+        </p>
+    </footer>
+</div>
+{% endblock %}
+</body>
+</html>

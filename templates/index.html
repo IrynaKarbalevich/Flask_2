@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container mt-5">
+    <h1>Статьи</h1>
+    {% for el in posts %}
+    <div class="p-3 mb-2 bg-light text-dark">
+        <h3> {{el.title}}</h3>
+        <p>{{el.intro}}</p>
+        <p><b>Дата:{{el.date.date()}}</b></p>
+        <a href="/post/{{el.id}}" class="btn btn-success">Детальнее</a>
+        <a href="/post/{{el.id}}/delete" class="btn btn-danger">Удалить</a>
+        <a href="/post/{{el.id}}/update" class="btn btn-warning">Копировать и редактировать</a>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
